@@ -1,49 +1,42 @@
-# Ralph Workstream Plan
+# Implementation Plan
 
-## Phase 1: Project Setup
-> Establish repository structure and tooling
+## Phase 1: Initialization
+> Set up the environment and understand the specification
 
-- [ ] Initialize git repository and set up README
-  - Proof: Commit initial structure
-- [ ] Configure CI/CD pipeline
-  - Proof: Pipeline runs on push
-- [ ] Set up linting and formatting
-  - Proof: Linter passes
+- [ ] Read `AGENTS.md` to understand agent behavior
+- [ ] Read `docs/conventions.md` to learn patterns and conventions
+- [ ] Identify the target workstream checklist file
+- [ ] Create a draft `instructions/plan.md` with high-level phases
 
-## Phase 2: Core Development
-> Build main application components
+## Phase 2: Detailed Planning
+> Break down implementation into actionable tasks
 
-- [ ] Implement data access layer
-  - Proof: Unit tests pass
-- [ ] Develop API endpoints
-  - Proof: Integration tests pass
-- [ ] Create user interface
-  - Proof: UI renders correctly
+- [ ] Define Phase 1: Project Setup tasks
+- [ ] Define Phase 2: Core Feature Implementation tasks
+- [ ] Define Phase 3: Testing and Verification tasks
+- [ ] Define Phase 4: Documentation tasks
+- [ ] Define Phase 5: Deployment tasks
 
-## Phase 3: Testing & Quality Assurance
-> Ensure reliability and performance
+## Phase 3: Execution Roadmap
+> Sequence of work phases and task completion criteria
 
-- [ ] Write comprehensive test suite
-  - Proof: Coverage >80%
-- [ ] Conduct security scan
-  - Proof: No critical findings
-- [ ] Optimize performance
-  - Proof: Response time meets SLA
+- [ ] Complete all tasks in Phase 1 before moving to Phase 2
+- [ ] Mark parent tasks as complete only when all subtasks are done
+- [ ] Record proof (commit hash) for each completed task
+- [ ] Update `instructions/plan.md` checklist accordingly
+- [ ] Commit changes with Conventional Commits messages
 
-## Phase 4: Documentation & Release
-> Prepare for production
+## Phase 4: Review and Polish
+> Ensure the plan meets all requirements
 
-- [ ] Update user documentation
-  - Proof: Docs reviewed and approved
-- [ ] Generate release notes
-  - Proof: Release notes published
-- [ ] Deploy to staging environment
-  - Proof: Deployment successful
+- [ ] Verify that each phase has a clear objective
+- [ ] Ensure tasks are ordered sequentially where required
+- [ ] Confirm that proof requirements are noted
+- [ ] Check that the file uses proper markdown formatting
+- [ ] Validate that the plan can be read and understood by a new agent
 
-## Phase 5: Monitoring & Maintenance
-> Maintain post-release
+## Phase 5: Finalize
+> Prepare for handover
 
-- [ ] Set up monitoring alerts
-  - Proof: Alerts configured
-- [ ] Schedule regular code reviews
-  - Proof: Review schedule established
+- [ ] Output `PLANNER_DONE` after the checklist is complete
+- [ ] Ensure no further actions are required
