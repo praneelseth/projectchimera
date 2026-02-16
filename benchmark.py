@@ -105,22 +105,11 @@ def clean_workspace(workspace: str):
     """Clean workspace for next run."""
     print("  🧹 Cleaning workspace...")
 
-    # Remove plan.md
-    plan_path = Path(workspace) / "instructions" / "plan.md"
-    if plan_path.exists():
-        plan_path.unlink()
-
-    # Remove src files
-    src_dir = Path(workspace) / "src"
-    if src_dir.exists():
-        for file in src_dir.glob("*.py"):
-            if file.name != "__init__.py":
-                file.unlink()
-
-    # Reset git (keep only initial commit)
+    # Reset git to baseline commit with spec and tests
+    # Baseline commit: 7f299fb (includes spec.md and test_json_parser.py)
     try:
         subprocess.run(
-            ['git', 'reset', '--hard', 'HEAD~20'],
+            ['git', 'reset', '--hard', '7f299fb'],
             cwd=workspace,
             capture_output=True,
             timeout=10
@@ -131,8 +120,8 @@ def clean_workspace(workspace: str):
             capture_output=True,
             timeout=10
         )
-    except Exception:
-        pass
+    except Exception as e:
+        print(f"  ⚠️  Warning: Could not reset workspace: {e}")
 
     print("  ✓ Workspace cleaned")
 
