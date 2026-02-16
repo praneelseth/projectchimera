@@ -50,6 +50,32 @@ status: incomplete
    - List concrete tasks with measurable proof requirements
 4. Ensure all tasks together fully satisfy the spec
 
+## Important Context
+
+**The workspace already has a proper structure:**
+- `src/` directory exists for source code
+- `tests/` directory exists with test files
+- Git is already initialized
+- Test framework is already set up
+
+**DO NOT create tasks for:**
+- Creating directory structures (they already exist)
+- Initializing git (already done)
+- Setting up test frameworks (already configured)
+- Creating nested project directories (unnecessary complexity)
+
+**Focus your plan on:**
+- Implementing the actual functionality in `src/`
+- Running tests to verify implementation
+- Making incremental progress with frequent commits
+- Fixing bugs and passing all tests
+
+**Keep it simple:**
+- This is a small-scale task, not a large project
+- Break implementation into 3-5 clear phases max
+- Each phase should have 2-4 concrete implementation tasks
+- Total should be 10-20 tasks, not 30+
+
 ## Output
 
 Write the complete checklist to `instructions/plan.md` using the format above.
