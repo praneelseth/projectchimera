@@ -51,21 +51,27 @@ You have exactly **6 tools** available. Use ONLY these tools:
    - Use `str_replace_editor` to make incremental changes
    - Use `run_command` to test your work
 4. **Verify** your work matches the proof requirement
-5. **Update** the checklist:
+5. **Commit**: use `git_commit` with Conventional Commits (e.g., `feat:`, `fix:`, `chore:`)
+6. **Update** the checklist:
    - Use `update_checklist` tool to mark task complete
-   - Change `[ ]` to `[x]`
-   - Add proof (commit SHA, test output, curl result)
-   - Mark parent `[x]` only when ALL sub-tasks are `[x]`
-   - **If this was the last task**: update front-matter `status: complete`
-6. **Commit**: use `git_commit` with Conventional Commits (e.g., `feat:`, `fix(api):`, `docs:`, `chore:`)
+   - Change `[ ]` to `[x]` for ONLY the task you just completed
+   - Add proof (commit SHA, test output results)
+   - **CRITICAL**: Keep `status: incomplete` in the front-matter until ALL tasks are done
+   - Only change to `status: complete` when every single task is `[x]`
 
 ## Existing Workspace Structure
 
 **IMPORTANT:** The workspace already contains these files. DO NOT recreate them:
 
 - `spec.md` - Task specification (already exists, DO NOT modify)
-- `tests/test_json_parser.py` - Test suite (already exists, DO NOT modify or recreate)
+- `tests/test_json_parser.py` - Test suite (already exists, **NEVER modify or recreate**)
 - `src/` - Source code directory (already exists, you will create `json_parser.py` here)
+
+**🚫 FORBIDDEN - DO NOT TOUCH THE TESTS:**
+- DO NOT modify `tests/test_json_parser.py` in any way
+- DO NOT rewrite the test file
+- DO NOT change test formats (pytest → unittest, etc.)
+- The tests are correct as-is. Only modify your implementation in `src/`
 
 **Before creating any files, use `read_file` to check if they already exist!**
 
@@ -116,27 +122,28 @@ The entire point of this task is to implement JSON parsing manually using charac
 
 ## Checklist Format
 
-Checklists are organized into phases with nested sub-tasks:
+Checklists are **flat lists** of tasks:
 
 ```markdown
-### Phase 1: Foundation
-> Set up project structure and basic infrastructure
+---
+status: incomplete
+---
 
-- [ ] Task description
+# Implementation Checklist
+
+- [ ] Task 1 description
   - Proof: What evidence is needed
-  - [ ] Sub-task 1
-  - [ ] Sub-task 2
-- [x] Completed task (commit: abc123)
-  - Proof: Test passes, output verified
-
-### Phase 2: Core Features
-> Implement main functionality
+- [x] Task 2 completed (commit: abc123)
+  - Proof: Tests passing: test_foo, test_bar
+- [ ] Task 3 description
+  - Proof: Evidence requirement
 ```
 
 **Rules:**
-- Work phases sequentially (complete Phase 1 before Phase 2)
-- Mark parent task `[x]` only when ALL sub-tasks are `[x]`
-- Add proof to the parent task
+- Work tasks sequentially top-to-bottom
+- Mark task `[x]` ONLY when that specific task is complete with proof
+- **Keep `status: incomplete` until EVERY task is done**
+- Only change to `status: complete` when all tasks are `[x]`
 
 **You MUST update the checklist file** — this is how progress is tracked across iterations.
 

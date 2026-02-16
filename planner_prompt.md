@@ -10,35 +10,29 @@ You are designing a checklist that the worker agent will execute. The worker use
 
 ## Checklist Format Requirements
 
-Design the checklist with this structure:
+Design the checklist as a **flat list** with this structure:
 
 ```markdown
 ---
 status: incomplete
 ---
 
-### Phase N: [Phase Name]
-> [One sentence describing the phase's purpose]
+# Implementation Checklist
 
 - [ ] [Task Description]
-  - Proof: [What evidence proves this task is complete - e.g., "File created at src/X, test passes", "Commit SHA", "curl output shows 200", etc.]
-  - [ ] Sub-task 1 description
-    - Proof: [Sub-task proof requirement]
-  - [ ] Sub-task 2 description
-    - Proof: [Sub-task proof requirement]
+  - Proof: [What evidence proves this task is complete - e.g., "Tests X, Y, Z passing", "Commit SHA: abc123", "File exists at path"]
 
-- [ ] [Another Task]
+- [ ] [Next Task Description]
   - Proof: [Evidence requirement]
 ```
 
 ## Key Rules
 
-1. **Phases First**: Organize into logical phases (Foundation, Core Features, Testing, etc.)
-2. **Proof Upfront**: Each task must have a clear "Proof" requirement. The worker will add evidence here (commit SHA, test output, etc.)
-3. **Sub-tasks Optional**: Only use sub-tasks if a task naturally breaks into smaller pieces
-4. **One Sentence Per Phase**: The `>` line explains the phase purpose
-5. **Inherit Proof**: Sub-tasks inherit the parent's proof requirement unless overridden
-6. **Sequential**: Phases should be completed in order top-to-bottom
+1. **Flat List Only**: NO phases, NO nested sub-tasks. Just a simple numbered list of tasks.
+2. **Proof Required**: Each task MUST have a specific "Proof" requirement that can be verified
+3. **One Task = One Action**: Each checkbox should be one atomic, testable action
+4. **Sequential Order**: Tasks should be completed top-to-bottom
+5. **Status Field**: Keep `status: incomplete` until ALL tasks done. Worker will change to `complete` only when finished.
 
 ## What to Design
 
@@ -72,9 +66,9 @@ status: incomplete
 
 **Keep it simple:**
 - This is a small-scale task, not a large project
-- Break implementation into 3-5 clear phases max
-- Each phase should have 2-4 concrete implementation tasks
-- Total should be 10-20 tasks, not 30+
+- Create a flat list of 8-15 specific tasks
+- NO phases or grouping - just a simple sequential list
+- Each task should be small and testable
 
 ## Output
 
