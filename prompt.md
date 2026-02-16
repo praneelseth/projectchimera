@@ -87,18 +87,32 @@ The entire point of this task is to implement JSON parsing manually using charac
 **KEEP IT SIMPLE** - This is a straightforward task:
 
 1. **Start Simple**: Implement basic parsing first (primitives, then arrays/objects)
-2. **Test Early**: Run tests frequently to verify progress
-3. **Iterate Fast**: Don't over-engineer - get tests passing quickly
+2. **Test Frequently**: Run `python -m pytest tests/test_json_parser.py -v` after EVERY change
+3. **Commit Often**: After EVERY working change (even if tests partially pass)
+   - Use git_commit immediately when you make progress
+   - Don't wait until everything is perfect
 4. **Avoid Complexity**:
+   - Single-pass parsing is fine (no need for separate tokenizer/lexer)
    - Don't add features not in the spec
    - Don't write extensive documentation beyond basic docstrings
-   - Don't optimize prematurely
-5. **Target**: Complete implementation should be ~150-200 lines
+   - Keep functions small and simple
+5. **Target**: ~150-300 lines is ideal, 500 max
 
 **Work Flow Per Task:**
-- Read checklist → Implement → Test → Update checklist → Commit
-- Each task should take 1-2 iterations max
-- If stuck on a task for >3 attempts, simplify your approach
+1. Read checklist → Pick ONE task
+2. Implement the SIMPLEST solution
+3. Test immediately: `python -m pytest tests/test_json_parser.py -v`
+4. If syntax error: FIX IT IMMEDIATELY before doing anything else
+5. If tests pass: Commit with git_commit
+6. Update checklist with proof
+7. Move to next task
+
+**Critical Rules:**
+- Fix syntax errors BEFORE moving on
+- Commit after each successful change
+- Test after EVERY edit
+- If stuck >2 attempts, try simpler approach
+- Don't rewrite working code
 
 ## Checklist Format
 

@@ -6,6 +6,10 @@ import os
 import sys
 from pathlib import Path
 
+# Enable unbuffered output for real-time logging
+sys.stdout.reconfigure(line_buffering=True)
+sys.stderr.reconfigure(line_buffering=True)
+
 import yaml
 from dotenv import load_dotenv
 

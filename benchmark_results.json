@@ -1,0 +1,30 @@
+[
+  {
+    "agent": "nemo",
+    "success": false,
+    "iterations": 0,
+    "time_elapsed": 0,
+    "memory_peak_mb": 0,
+    "tokens_used": 0,
+    "context_rotations": 0,
+    "tests_passing": 0,
+    "tests_total": 0,
+    "lines_of_code": 0,
+    "git_commits": 0,
+    "error": "Worker timeout (>10 min)"
+  },
+  {
+    "agent": "claude",
+    "success": false,
+    "iterations": 0,
+    "time_elapsed": 0,
+    "memory_peak_mb": 0,
+    "tokens_used": 0,
+    "context_rotations": 0,
+    "tests_passing": 0,
+    "tests_total": 0,
+    "lines_of_code": 0,
+    "git_commits": 0,
+    "error": "Planner failed: "
+  }
+]
