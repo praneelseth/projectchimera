@@ -319,7 +319,7 @@ BENCHMARK RESULTS
 | **Iterations**          | 5                   | 8                   |
 | **Time Elapsed**        | 145.2s              | 210.5s              |
 | **Memory Usage (Peak)** | 85.3 MB             | 120.7 MB            |
-| **Tests Passing**       | 58/60 (97%)         | 45/60 (75%)         |
+| **Tests Passing**       | 21/21 (100%)        | 19/21 (90%)         |
 | **Lines of Code**       | 171                 | 245                 |
 | **Git Commits**         | 8                   | 12                  |
 | **Tokens Used**         | 346,375             | 125,423             |
