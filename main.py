@@ -143,7 +143,7 @@ def run_worker(config: dict, agent_type: str):
     print("\n" + "=" * 60)
     print("EXECUTION SUMMARY")
     print("=" * 60)
-    print(f"Agent: {config['agent']['provider']}")
+    print(f"Agent: {agent_type}")
     print(f"Iterations: {result['iterations']}")
     print(f"Total tokens: {result['total_tokens']:,}")
     print(f"Context rotations: {result.get('rotations', 0)}")
