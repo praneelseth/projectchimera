@@ -106,10 +106,10 @@ def clean_workspace(workspace: str):
     print("  🧹 Cleaning workspace...")
 
     # Reset git to baseline commit with spec and tests
-    # Baseline commit: 52bee45 (simplified spec + explicit library ban)
+    # Baseline commit: c75f788 (simplified spec + explicit library ban, clean)
     try:
         subprocess.run(
-            ['git', 'reset', '--hard', '52bee45'],
+            ['git', 'reset', '--hard', 'c75f788'],
             cwd=workspace,
             capture_output=True,
             timeout=10
