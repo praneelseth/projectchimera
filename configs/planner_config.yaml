@@ -1,0 +1,22 @@
+# Planner Agent Configuration
+# Use --agent flag to switch between providers:
+#   python main.py --mode plan --agent nemo   (NVIDIA Nemotron, default)
+#   python main.py --mode plan --agent claude (Anthropic Claude)
+
+llm:
+  # Current provider (reference only, use --agent flag to switch)
+  provider: "nvidia"
+
+  # Model selection:
+  # - NeMo: "nvidia/nemotron-3-nano-30b-a3b" (default)
+  # - Claude: "claude-sonnet-4-5-20250929"
+  model: "nvidia/nemotron-3-nano-30b-a3b"
+
+  # API base URL (only needed for NeMo)
+  api_base: "https://integrate.api.nvidia.com/v1"
+
+  max_tokens: 8000
+  temperature: 0.7
+
+workspace:
+  directory: "testing"

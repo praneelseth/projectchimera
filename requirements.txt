@@ -1,0 +1,13 @@
+# NeMo Agent Toolkit (for --agent nemo)
+nvidia-nat>=1.4.0
+
+# LLM Providers
+openai>=1.0.0      # NVIDIA API (OpenAI-compatible format)
+anthropic>=0.40.0  # Anthropic API (for --agent claude)
+
+# Configuration
+pyyaml>=6.0
+
+# Utilities
+python-dotenv>=1.0.0
+psutil>=5.9.0  # For benchmark memory tracking
