@@ -125,7 +125,7 @@ project-chimera/
 ├── configs/
 │   ├── planner_config.yaml # Planner configuration (both providers)
 │   └── worker_config.yaml  # Worker configuration (both providers)
-├── testing/                # Benchmark workspace (git repo)
+├── testing/                # Benchmark workspace (git repo, clone this from https://github.com/praneelseth/testing)
 │   ├── spec.md             # JSON parser specification
 │   ├── AGENTS.md           # Operational rules for workers
 │   ├── docs/conventions.md # Learned patterns and "Signs"
