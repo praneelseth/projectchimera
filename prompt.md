@@ -74,6 +74,24 @@ Your task is to:
 2. Use the existing test file at `tests/test_json_parser.py` for validation
 3. Follow the requirements in `spec.md`
 
+## Implementation Strategy
+
+**KEEP IT SIMPLE** - This is a straightforward task:
+
+1. **Start Simple**: Implement basic parsing first (primitives, then arrays/objects)
+2. **Test Early**: Run tests frequently to verify progress
+3. **Iterate Fast**: Don't over-engineer - get tests passing quickly
+4. **Avoid Complexity**:
+   - Don't add features not in the spec
+   - Don't write extensive documentation beyond basic docstrings
+   - Don't optimize prematurely
+5. **Target**: Complete implementation should be ~150-200 lines
+
+**Work Flow Per Task:**
+- Read checklist → Implement → Test → Update checklist → Commit
+- Each task should take 1-2 iterations max
+- If stuck on a task for >3 attempts, simplify your approach
+
 ## Checklist Format
 
 Checklists are organized into phases with nested sub-tasks:
