@@ -74,6 +74,14 @@ Your task is to:
 2. Use the existing test file at `tests/test_json_parser.py` for validation
 3. Follow the requirements in `spec.md`
 
+**🚫 FORBIDDEN - DO NOT USE THESE:**
+- `import json` - You CANNOT use Python's built-in JSON library
+- `json.loads()`, `json.dumps()` - These automatically solve the task
+- Any external parsing library that does the work for you
+- You MUST implement the parser from scratch using only basic Python (strings, lists, dicts)
+
+The entire point of this task is to implement JSON parsing manually using character-by-character processing.
+
 ## Implementation Strategy
 
 **KEEP IT SIMPLE** - This is a straightforward task:
