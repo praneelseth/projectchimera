@@ -26,6 +26,7 @@ class NeMoWorkerAgent:
         self.llm = NeMoLLMClient()
         self.tools = RalphTools(workspace_dir)
         self.context_guard = context_guard
+        self.rotation_count = 0
 
     def load_system_prompt(self) -> str:
         """Load the worker system prompt."""
@@ -186,7 +187,7 @@ Begin now with the next task."""
                     return {
                         "success": True,
                         "action": "continue",
-                        "should_continue": not self.context_guard.should_rotate(),
+                        "should_continue": True,
                         "message": f"Step completed. Tokens: {self.llm.get_total_tokens()}, Usage: {self.context_guard.get_usage_percentage():.1f}%"
                     }
 
@@ -243,13 +244,21 @@ Begin now with the next task."""
 
             # Check if rotation needed
             if self.context_guard.should_rotate():
-                print(f"\n[Worker] ⚠ Context rotation threshold reached ({self.context_guard.get_usage_percentage():.1f}%)")
-                print(f"[Worker] Total tokens: {self.context_guard.current_tokens:,}")
-                print(f"[Worker] Checkpoint: Ensure work is committed before rotation")
-                break
+                self.rotation_count += 1
+                print(f"\n[Worker] 🔄 Context rotation #{self.rotation_count} triggered")
+                print(f"[Worker] Token usage before rotation: {self.context_guard.current_tokens:,} tokens ({self.context_guard.get_usage_percentage():.1f}%)")
+
+                # Reset context state
+                self.context_guard.reset()
+                self.llm.reset_token_count()
+
+                print(f"[Worker] ✓ Context reset complete. Continuing with fresh context...")
+                print(f"[Worker] Progress persisted in: instructions/plan.md")
+                # Continue the loop - do NOT break
 
         return {
             "iterations": iteration,
             "total_tokens": self.context_guard.current_tokens,
-            "completed": iteration < max_iterations and result.get('action') == 'complete'
+            "completed": iteration < max_iterations and result.get('action') == 'complete',
+            "rotations": self.rotation_count
         }

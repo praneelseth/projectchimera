@@ -21,6 +21,7 @@ from pathlib import Path
 from dataclasses import dataclass, asdict
 from typing import Optional
 import psutil
+from dotenv import load_dotenv
 
 
 @dataclass
@@ -32,6 +33,7 @@ class BenchmarkResult:
     time_elapsed: float
     memory_peak_mb: float
     tokens_used: int
+    context_rotations: int
     tests_passing: int
     tests_total: int
     lines_of_code: int
@@ -163,6 +165,7 @@ def run_agent(agent: str, workspace: str) -> BenchmarkResult:
                 time_elapsed=0,
                 memory_peak_mb=0,
                 tokens_used=0,
+                context_rotations=0,
                 tests_passing=0,
                 tests_total=0,
                 lines_of_code=0,
@@ -184,6 +187,7 @@ def run_agent(agent: str, workspace: str) -> BenchmarkResult:
             time_elapsed=0,
             memory_peak_mb=0,
             tokens_used=0,
+            context_rotations=0,
             tests_passing=0,
             tests_total=0,
             lines_of_code=0,
@@ -213,7 +217,11 @@ def run_agent(agent: str, workspace: str) -> BenchmarkResult:
         tokens_match = re.search(r'Total tokens:\s*([\d,]+)', output)
         tokens = int(tokens_match.group(1).replace(',', '')) if tokens_match else 0
 
-        print(f"  ✓ Worker complete ({iterations} iterations, {tokens:,} tokens)")
+        # Extract rotations
+        rotations_match = re.search(r'Context rotations:\s*(\d+)', output)
+        rotations = int(rotations_match.group(1)) if rotations_match else 0
+
+        print(f"  ✓ Worker complete ({iterations} iterations, {tokens:,} tokens, {rotations} rotations)")
 
         # Update memory
         current_memory = get_memory_usage()
@@ -227,6 +235,7 @@ def run_agent(agent: str, workspace: str) -> BenchmarkResult:
             time_elapsed=0,
             memory_peak_mb=0,
             tokens_used=0,
+            context_rotations=0,
             tests_passing=0,
             tests_total=0,
             lines_of_code=0,
@@ -252,6 +261,7 @@ def run_agent(agent: str, workspace: str) -> BenchmarkResult:
         time_elapsed=elapsed,
         memory_peak_mb=memory_used,
         tokens_used=tokens,
+        context_rotations=rotations,
         tests_passing=passing,
         tests_total=total,
         lines_of_code=loc,
@@ -288,6 +298,7 @@ def display_results(results: list[BenchmarkResult]):
             return str(value)
 
     print(f"| **Iterations**          | {format_value(nemo_result, 'iterations'):19} | {format_value(claude_result, 'iterations'):19} |")
+    print(f"| **Context Rotations**   | {format_value(nemo_result, 'context_rotations'):19} | {format_value(claude_result, 'context_rotations'):19} |")
     print(f"| **Time Elapsed**        | {format_value(nemo_result, 'time_elapsed', 'time'):19} | {format_value(claude_result, 'time_elapsed', 'time'):19} |")
     print(f"| **Memory Usage (Peak)** | {format_value(nemo_result, 'memory_peak_mb', 'memory'):19} | {format_value(claude_result, 'memory_peak_mb', 'memory'):19} |")
     print(f"| **Tests Passing**       | {format_value(nemo_result, 'tests_passing', 'tests'):19} | {format_value(claude_result, 'tests_passing', 'tests'):19} |")
@@ -322,6 +333,9 @@ def display_results(results: list[BenchmarkResult]):
 
 def main():
     """Main benchmark execution."""
+    # Load environment variables
+    load_dotenv()
+
     print("="*60)
     print("PROJECT CHIMERA - BENCHMARK SUITE")
     print("Comparing NVIDIA Nemotron vs Claude on JSON Parser Task")
