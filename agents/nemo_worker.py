@@ -167,10 +167,28 @@ Begin now with the next task."""
                         tool_name = tool_call.function.name
                         tool_args = json.loads(tool_call.function.arguments)
 
-                        print(f"  [Tool] {tool_name}({list(tool_args.keys())})")
+                        # Format args for display
+                        args_display = []
+                        for k, v in tool_args.items():
+                            if isinstance(v, str) and len(v) > 100:
+                                args_display.append(f"{k}='{v[:100]}...'")
+                            else:
+                                args_display.append(f"{k}={repr(v)}")
+                        args_str = ", ".join(args_display)
+                        print(f"  [Tool] {tool_name}({args_str})")
 
                         # Execute tool
                         result = self.tools.execute_tool(tool_name, tool_args)
+
+                        # Show result summary
+                        if result:
+                            result_preview = result[:200] if len(result) < 200 else result[:200] + "..."
+                            if "error" in result.lower() or "failed" in result.lower():
+                                print(f"  [Result] ✗ Error: {result_preview}")
+                            else:
+                                print(f"  [Result] ✓ Success")
+                        else:
+                            print(f"  [Result] ✓ (no output)")
 
                         # Add tool result to messages
                         messages.append({
