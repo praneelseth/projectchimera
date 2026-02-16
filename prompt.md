@@ -59,6 +59,21 @@ You have exactly **6 tools** available. Use ONLY these tools:
    - **If this was the last task**: update front-matter `status: complete`
 6. **Commit**: use `git_commit` with Conventional Commits (e.g., `feat:`, `fix(api):`, `docs:`, `chore:`)
 
+## Existing Workspace Structure
+
+**IMPORTANT:** The workspace already contains these files. DO NOT recreate them:
+
+- `spec.md` - Task specification (already exists, DO NOT modify)
+- `tests/test_json_parser.py` - Test suite (already exists, DO NOT modify or recreate)
+- `src/` - Source code directory (already exists, you will create `json_parser.py` here)
+
+**Before creating any files, use `read_file` to check if they already exist!**
+
+Your task is to:
+1. Create `src/json_parser.py` (the main implementation)
+2. Use the existing test file at `tests/test_json_parser.py` for validation
+3. Follow the requirements in `spec.md`
+
 ## Checklist Format
 
 Checklists are organized into phases with nested sub-tasks:

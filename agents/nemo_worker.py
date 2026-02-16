@@ -255,6 +255,7 @@ Begin now with the next task."""
                 print(f"[Worker] ✓ Context reset complete. Continuing with fresh context...")
                 print(f"[Worker] Progress persisted in: instructions/plan.md")
                 # Continue the loop - do NOT break
+                continue
 
         return {
             "iterations": iteration,
