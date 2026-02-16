@@ -319,14 +319,13 @@ BENCHMARK RESULTS
 | **Iterations**          | 5                   | 8                   |
 | **Time Elapsed**        | 145.2s              | 210.5s              |
 | **Memory Usage (Peak)** | 85.3 MB             | 120.7 MB            |
-| **Tests Passing**       | 45/60 (75%)         | 58/60 (97%)         |
+| **Tests Passing**       | 58/60 (97%)         | 45/60 (75%)         |
 | **Lines of Code**       | 171                 | 245                 |
 | **Git Commits**         | 8                   | 12                  |
 | **Tokens Used**         | 346,375             | 125,423             |
 
-🏆 Winner: Claude (more tests passing)
+🏆 Winner: NeMo (more test cases passed)
 
-📊 Results saved to benchmark_results.json
 ```
 
 #### Manual Comparison
