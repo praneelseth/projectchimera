@@ -145,6 +145,8 @@ project-chimera/
 git clone <repo-url>
 cd project-chimera
 
+git clone https://github.com/praneelseth/testing.git
+
 # Install dependencies
 pip install -r requirements.txt
 
